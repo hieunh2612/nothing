@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game</title>
+    <style>
+      #game-board {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        position: relative;
+      }
+
+      #player {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #goal {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: green;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-board">
+      <div id="player"></div>
+      <div id="goal"></div>
+    </div>
+    <button onclick="movePlayer()">Move player</button>
+
+    <script>
+      function movePlayer() {
+        var player = document.getElementById("player");
+        var left = parseInt(player.style.left, 10) || 0;
+        var top = parseInt(player.style.top, 10) || 0;
+
+        if (left < 450) {
+          player.style.left = (left + 50) + "px";
+        }
+
+        if (top < 450) {
+          player.style.top = (top + 50) + "px";
+        }
+
+        if (left >= 450 && top >= 450) {
+          alert("You win!");
+        }
+      }
+    </script>
+  </body>
+</html>
